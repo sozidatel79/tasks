@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "f0eab958-2dbd-4c5b-80dc-b00853eae7da",
+		"name": "Tasks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19897661"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://webbox.live/api/tasks",
+					"protocol": "http",
+					"host": [
+						"webbox",
+						"live"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://webbox.live/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"webbox",
+						"live"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"completed\": 0,\r\n    \"title\": \"Task From postman\",\r\n    \"date\": \"2022-07-19\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://webbox.live/api/tasks",
+					"protocol": "http",
+					"host": [
+						"webbox",
+						"live"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTask",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://webbox.live/api/tasks/12",
+					"protocol": "http",
+					"host": [
+						"webbox",
+						"live"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"completed\": 0,\r\n    \"title\": \"Task number 11\",\r\n    \"date\": \"2022-07-12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://webbox.live/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"webbox",
+						"live"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
