@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 60%;
+    min-height: 500px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: auto;
+    margin-top: 100px;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 4px #000;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    min-width: 300px;
+}
+
+
+.header {
+    color: #000;
+    text-align: center;
+    position: relative;
+    bottom: 86px;
+}
+
+.no-tasks {
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+}
+
+.task-completed {
+    text-decoration: line-through;
+    color: indianred;
+}
+
+.task-active {
+    color: forestgreen;
+    font-weight: 500;
+}
+
+.add-task-form {
+    width: 71%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-direction: row;
+}
+
+.add-task-button {
+    padding: 10px;
+    width: 155px;
+    background: steelblue;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 3px;
+    border: 1px solid black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-task-button span {
+    margin-right: 10px;
+}
+
+.task-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button-complete,
+.button-delete,
+.button-edit {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 20px;
+    padding-left: 15px;
+}
+
+.fa-check-circle {
+    color: lightseagreen;
+}
+
+.fa-trash {
+    color: indianred;
+}
+
+.fa-edit {
+    color: #63b3ff;
+}
+
+.fa-undo {
+    color: darkred;
+}
+
+.counter {
+    white-space: nowrap;
+}
+
+.counters-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 71%;
+    bottom: 50px;
+    position: relative;
+}
+
+.counter-text {
+    border: 1px solid black;
+    padding: 7px;
+    border-radius: 5px 0 0 5px;
+    background: slategray;
+    color: aliceblue;
+    width: 119px;
+    text-align: center;
+    display: inline-block;
+}
+
+.counter-number {
+    border: 1px solid black;
+    padding: 7px;
+    background: lightskyblue;
+    color: #000;
+    width: 40px;
+    position: relative;
+    right: 1px;
+    font-weight: bold;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: space-around;
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: lavender;
+}
+
+table .th-clickable {
+    cursor: pointer;
+}
+
+.modal-container {
+    position: absolute;
+    top: 1px;
+    display: flex;
+    justify-content: space-between;
+    width: 32%;
+    border: 1px solid darkred;
+    background: mistyrose;
+    padding: 14px;
+    border-radius: 5px;
+}
+
+.modal-container .close-modal {
+    cursor: pointer;
+}
+
+.new-task {
+    width: 73%;
+}
+
+.new-task input {
+    padding: 10px;
+    width: 88%;
+    font-size: 15px;
+    border-radius: 3px;
+    border: 1px solid black;
+    color: #1a202c;
+    margin-top: 5px;
+}
+
+.filters-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: normal;
+    width: 71%;
+    margin-bottom: 20px;
+}
+
+.filter-by {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 65%;
+}
+
+.filter-by form {
+    display: flex;
+}
+
+.filters-container select {
+    padding: 6px;
+    width: 154px;
+    background: lightsteelblue;
+    font-size: 11px;
+}
+
+.filters-container input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: self-start;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.filter-by-dates {
+    display: flex;
+    width: 130px;
+    flex-direction: column;
+}
+
+.filter-by-dates div.react-datepicker-wrapper .react-datepicker__input-container input {
+    padding: 6px;
+    width: 128px;
+    background: lightsteelblue;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.submit-filter-button {
+    width: 60px;
+    height: 61px;
+    color: gainsboro;
+    font-size: 20px;
+    position: relative;
+    right: 6px;
+    background: slategray;
+    border: 1px solid;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    table {
+        border: 0;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+
+    .add-task-form {
+        justify-content: center !important;
+        margin-right: 0 !important;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .counters-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 150px;
+        width: 245px;
+    }
+
+    .add-task-button {
+        margin-top: 20px;
+    }
+
+    .filters-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+    .filter-by {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100px;
+    }
+
+    .filter-by-dates {
+        display: flex;
+        width: 154px;
+        margin-bottom: 3px;
+    }
+
+    .filter-by-dates div.react-datepicker-wrapper .react-datepicker__input-container input {
+        width: 139px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
