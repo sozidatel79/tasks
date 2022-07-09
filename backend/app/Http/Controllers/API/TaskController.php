@@ -123,7 +123,7 @@ class TaskController extends Controller
             if ( ! $updated ) {
                 return response([
                     "code" => 404,
-                    "status" => "Bad Request",
+                    "status" => "Not found",
                     "message" => "Task with ID ${id} not found, nothing to update",
                 ])->header("Content-type", "Application/json")->setStatusCode(404);
             }
