@@ -58,6 +58,7 @@ const AddTaskForm = (
 
             createTask(setTasks, new_task, tasks)
             setInput("");
+            setStartDate(new Date())
         } else {
             const taskToUpdate = {
                 id: editTask.id,
