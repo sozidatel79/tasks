@@ -67,6 +67,7 @@ const AddTaskForm = (
             }
 
             UpdateTask(taskToUpdate)
+            setStartDate(new Date())
             updateTask( input, editTask.id, editTask.completed, dateFormat(startDate, "yyyy-mm-dd"))
         }
 
