@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
 use Illuminate\Http\Request;
-use \Illuminate\Support\Facades\Validator;
+use App\Services\TaskService;
+
 
 class TaskController extends Controller
 {
+    public $taskService;
 
-    private $rules = [
-        'title' => 'required',
-        'date' => 'required',
-        'completed' => 'required'
-    ];
+    public function __construct(TaskService $taskService){
+        $this->taskService = $taskService;
+    }
 
     /**
      * Display a listing of the resource.
@@ -22,46 +21,15 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(): \Illuminate\Http\Response {
-
-        $tasks = Task::all();
-
-        if ( ! $tasks ) {
-            return response([
-                "code" => 404,
-                "status" => "Not Found",
-                "message" => "There are no tasks"
-            ])->header("Content-type", "Application/json")->setStatusCode(404);
-        }
-
-        return response([
-            "code" => 200,
-            "status" => "OK",
-            "data" => $tasks
-        ])->header("Content-type", "Application/json")->setStatusCode(200);
-
+        return $this->taskService->getAll();
     }
 
     /**
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
      */
-    public function show(int $id)
-    {
-        $task = Task::find($id);
-
-        if ( ! $task ) {
-            return response([
-                "code" => 404,
-                "status" => "Not Found",
-                "message" => "Task with ID ${id} not found"
-            ])->header("Content-type", "Application/json")->setStatusCode(404);
-        }
-        return response([
-            "code" => 200,
-            "status" => "OK",
-            "data" => $task
-        ])->header("Content-type", "Application/json")->setStatusCode(200);
-
+    public function show(int $id): \Illuminate\Http\Response {
+        return $this->taskService->getOne($id);
     }
 
     /**
@@ -71,35 +39,7 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request): \Illuminate\Http\Response {
-
-        $validator = Validator::make($request->all(), $this->rules);
-
-        if ( $validator->fails() ) {
-            return response([
-                "code" => 400,
-                "status" => "Bad Request",
-                "message" => "You missing some fields are required"
-            ])->header("Content-type", "Application/json")->setStatusCode(400);
-        } else {
-            $created = Task::create([
-                'title' => $request->request->get('title'),
-                'completed' => $request->request->get('completed'),
-                'date' => $request->request->get('date')
-            ]);
-            if ( ! $created ) {
-                return response([
-                    "code" => 400,
-                    "status" => "Bad Request",
-                    "message" => "Task creation failed"
-                ])->header("Content-type", "Application/json")->setStatusCode(400);
-            }
-            return response([
-                "code" => 200,
-                "status" => "OK",
-                "message" => "Task Created",
-                "data" => $created
-            ])->header("Content-type", "Application/json")->setStatusCode(200);
-        }
+        return $this->taskService->save($request);
     }
 
     /**
@@ -110,34 +50,7 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, int $id): \Illuminate\Http\Response {
-        $validator = Validator::make($request->all(), $this->rules);
-
-        if ( $validator->fails() ) {
-            return response([
-                "code" => 400,
-                "status" => "Bad Request",
-                "message" => "You missing some fields are required"
-            ])->header("Content-type", "Application/json")->setStatusCode(400);
-        } else {
-            $updated = Task::find($id);
-            if ( ! $updated ) {
-                return response([
-                    "code" => 404,
-                    "status" => "Not found",
-                    "message" => "Task with ID ${id} not found, nothing to update",
-                ])->header("Content-type", "Application/json")->setStatusCode(404);
-            }
-            $updated->title = $request->request->get('title');
-            $updated->date = $request->request->get('date');
-            $updated->completed = $request->request->get('completed');
-            $updated->save();
-            return response([
-                "code" => 200,
-                "status" => "OK",
-                "message" => "Task updated",
-                "data" => $updated
-            ])->header("Content-type", "Application/json")->setStatusCode(200);
-        }
+        return $this->taskService->update($request, $id);
     }
 
     /**
@@ -147,22 +60,7 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(int $id): \Illuminate\Http\Response {
-        $deleted = Task::find($id);
-        if ( ! $deleted ) {
-            return response([
-                "code" => 404,
-                "status" => "Not found",
-                "message" => "Task with ID ${id} not found, nothing to delete",
-            ])->header("Content-type", "Application/json")->setStatusCode(404);
-        }
-        $deleted->delete();
-
-        return response([
-            "code" => 200,
-            "status" => "OK",
-            "message" => "Task deleted",
-            "data" => $deleted
-        ])->header("Content-type", "Application/json")->setStatusCode(200);
+        return $this->taskService->delete($id);
     }
 
 }
