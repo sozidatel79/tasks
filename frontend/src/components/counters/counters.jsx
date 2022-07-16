@@ -7,23 +7,11 @@ const Counter = ({tasks}) => {
     }
 
     const CompletedTasksCounter = () => {
-        let counter = 0;
-        tasks.map(item => {
-            if (item.completed) {
-                counter++
-            }
-        })
-        return counter
+        return tasks.filter(task => task.completed).length
     }
 
     const UncompletedTasksCounter = () => {
-        let counter = 0;
-        tasks.map(item => {
-            if (!item.completed) {
-                counter++
-            }
-        })
-        return counter
+        return tasks.filter(task => ! task.completed).length
     }
 
     return(
