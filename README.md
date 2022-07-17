@@ -28,7 +28,3 @@ In order to install Server
 Apache
 --------------------------------------
 1.Configure you virtual host run content from backend/public folder, or put the content of backend folder to place you preffer.
-
-Live Demo: 
-<a target="_blank" href='http://webbox.live:3000'>Follow the sword ()===][========> </a>
---------------------------------------
